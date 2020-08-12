@@ -1,0 +1,2 @@
+class TestingQueue < ApplicationRecord
+end
