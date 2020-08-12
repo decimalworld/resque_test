@@ -26,6 +26,16 @@ services:
     ports:
       - 3000:3000
 
+  worker:
+    depends_on:
+      - 'db'
+      - 'redis'
+    build: .
+    command: bash -c "bundle exec rake environment resque:work QUEUE=*"
+    volumes:
+      - ./:/resque_test
+    
+
 
 volumes:
   redis:
